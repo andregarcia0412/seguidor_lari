@@ -22,7 +22,7 @@ void setup() {
 }
 
 void loop() {
-  int pwm = 165;
+  int pwm = 210;
   int opticAnalog1 = analogRead(A0);
   int opticAnalog2 = analogRead(A2);
   int opticAnalog3 = analogRead(A5);
@@ -31,21 +31,7 @@ void loop() {
   Serial.print(' ');
   Serial.print(opticAnalog2); //direita, 200
   Serial.print(' ');
-  Serial.println(opticAnalog3); //centro
-
-
-//  for(int i = 1; i <= 1000; i++){
-//         digitalWrite(11,HIGH);
-//         digitalWrite(10,LOW);
-//         digitalWrite(6,HIGH);
-//         digitalWrite(5,LOW);
-//         delay(200);
-//         digitalWrite(11,LOW);
-//         digitalWrite(10,HIGH);
-//         digitalWrite(6,LOW);
-//         digitalWrite(5,HIGH);
-//         delay(200);
-//       } //emote
+  Serial.println(opticAnalog3); //centro, 300
 
   if (opticAnalog3 >= 300){
     if(opticAnalog1 < 500 && opticAnalog2 < 200){
@@ -72,35 +58,15 @@ void loop() {
       digitalWrite(11, LOW);
       digitalWrite(10, HIGH);
       digitalWrite(6, LOW);
-      analogWrite(5, 120);
+      analogWrite(5, 75);
     }
     else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
-      analogWrite(11, 120);
+      analogWrite(11, 75);
       digitalWrite(10, LOW);
       digitalWrite(6, HIGH);
       digitalWrite(5, LOW);
     }
   }
-   
-  // if(opticAnalog1 < 500 && opticAnalog2 < 200){
-  //     digitalWrite(11, LOW);
-  //     analogWrite(10, pwm);
-  //     analogWrite(6, pwm);
-  //     digitalWrite(5, LOW); 
-  //   }
-  //   else if(opticAnalog1 >= 500 && opticAnalog2 < 200){
-  //     digitalWrite(11, LOW);
-  //     digitalWrite(10, HIGH);
-  //     digitalWrite(6, LOW);
-  //     digitalWrite(5, HIGH);
-  //   }
-  //   else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
-  //     digitalWrite(11, HIGH);
-  //     digitalWrite(10, LOW);
-  //     digitalWrite(6, HIGH);
-  //     digitalWrite(5, LOW);
-  //   }
-
    
   delay(1);
 }
