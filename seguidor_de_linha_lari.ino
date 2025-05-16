@@ -47,46 +47,12 @@ void loop() {
 //         delay(200);
 //       } //emote
 
-  // if (opticAnalog3 >= 300){
-  //   if(opticAnalog1 < 500 && opticAnalog2 < 200){
-  //       digitalWrite(11, LOW);
-  //       analogWrite(10, pwm);
-  //       analogWrite(6, pwm);
-  //       digitalWrite(5, LOW); 
-  //   }
-  //   else if(opticAnalog1 >= 500 && opticAnalog2 < 200){
-  //     digitalWrite(11, LOW);
-  //     digitalWrite(10, HIGH);
-  //     digitalWrite(6, LOW);
-  //     digitalWrite(5, HIGH);
-  //   }
-  //   else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
-  //     digitalWrite(11, HIGH);
-  //     digitalWrite(10, LOW);
-  //     digitalWrite(6, HIGH);
-  //     digitalWrite(5, LOW);
-  //   }
-  // } 
-  // else{
-  //   if(opticAnalog1 >= 500 && opticAnalog2 < 200){
-  //     digitalWrite(11, LOW);
-  //     analogWrite(10, HIGH);
-  //     digitalWrite(6, LOW);
-  //     digitalWrite(5, LOW);
-  //   }
-  //   else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
-  //     digitalWrite(11, LOW);
-  //     digitalWrite(10, LOW);
-  //     analogWrite(6, HIGH);
-  //     digitalWrite(5, LOW);
-  //   }
-  // }
-   
-  if(opticAnalog1 < 500 && opticAnalog2 < 200){
-      digitalWrite(11, LOW);
-      analogWrite(10, pwm);
-      analogWrite(6, pwm);
-      digitalWrite(5, LOW); 
+  if (opticAnalog3 >= 300){
+    if(opticAnalog1 < 500 && opticAnalog2 < 200){
+        digitalWrite(11, LOW);
+        analogWrite(10, pwm);
+        analogWrite(6, pwm);
+        digitalWrite(5, LOW); 
     }
     else if(opticAnalog1 >= 500 && opticAnalog2 < 200){
       digitalWrite(11, LOW);
@@ -100,7 +66,41 @@ void loop() {
       digitalWrite(6, HIGH);
       digitalWrite(5, LOW);
     }
+  } 
+  else{
+    if(opticAnalog1 >= 500 && opticAnalog2 < 200){
+      digitalWrite(11, LOW);
+      digitalWrite(10, HIGH);
+      digitalWrite(6, LOW);
+      analogWrite(5, 120);
+    }
+    else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
+      analogWrite(11, 120);
+      digitalWrite(10, LOW);
+      digitalWrite(6, HIGH);
+      digitalWrite(5, LOW);
+    }
+  }
+   
+  // if(opticAnalog1 < 500 && opticAnalog2 < 200){
+  //     digitalWrite(11, LOW);
+  //     analogWrite(10, pwm);
+  //     analogWrite(6, pwm);
+  //     digitalWrite(5, LOW); 
+  //   }
+  //   else if(opticAnalog1 >= 500 && opticAnalog2 < 200){
+  //     digitalWrite(11, LOW);
+  //     digitalWrite(10, HIGH);
+  //     digitalWrite(6, LOW);
+  //     digitalWrite(5, HIGH);
+  //   }
+  //   else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
+  //     digitalWrite(11, HIGH);
+  //     digitalWrite(10, LOW);
+  //     digitalWrite(6, HIGH);
+  //     digitalWrite(5, LOW);
+  //   }
 
    
-  delay(5);
+  delay(1);
 }
