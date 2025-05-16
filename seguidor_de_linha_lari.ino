@@ -25,11 +25,13 @@ void loop() {
   int pwm = 160;
   int opticAnalog1 = analogRead(A0);
   int opticAnalog2 = analogRead(A2);
-  int opticAnalog3 = analogRead(A3);
+  int opticAnalog3 = analogRead(A5);
 
   Serial.print(opticAnalog1); //esquerda, 500
   Serial.print(' ');
-  Serial.println(opticAnalog2); //direita, 200
+  Serial.print(opticAnalog2); //direita, 200
+  Serial.print(' ');
+  Serial.println(opticAnalog3); //centro
 
 
 //  for(int i = 1; i <= 1000; i++){
@@ -45,25 +47,45 @@ void loop() {
 //         delay(200);
 //       } //emote
 
-  if(opticAnalog1 < 500 && opticAnalog2 < 200 && opticAnalog3 >= 400){ //se nao detectar o preto, vai reto
+if (opticAnalog3 >= 200){
+  if(opticAnalog1 >= 500 && opticAnalog2 >= 200){
       digitalWrite(11, LOW);
       analogWrite(10, pwm);
       analogWrite(6, pwm);
       digitalWrite(5, LOW); 
-  } 
-  if(opticAnalog1 >= 500 && opticAnalog3 < 400){ //girar a roda da esquerda para tras e da direita para frente
-      digitalWrite(11, LOW);
-      digitalWrite(10, HIGH);
-      digitalWrite(6, LOW);
-      digitalWrite(5, HIGH);
-  } 
-  if(opticAnalog2 > 200 && opticAnalog3 < 400){ //gira a roda da esquerda para frente e a da direita para tras
-      digitalWrite(11, HIGH);
-      digitalWrite(10, LOW);
-      digitalWrite(6, HIGH);
-      digitalWrite(5, LOW);
-   }
+  }
+  else if(opticAnalog1 >= 500 && opticAnalog2 < 200){
+    digitalWrite(11, LOW);
+    digitalWrite(10, HIGH);
+    digitalWrite(6, LOW);
+    digitalWrite(5, HIGH);
+  }
+  else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
+    digitalWrite(11, HIGH);
+    digitalWrite(10, LOW);
+    digitalWrite(6, HIGH);
+    digitalWrite(5, LOW);
+  }
+} else{
+  if(opticAnalog1 >= 500 && opticAnalog2 < 200){
+    digitalWrite(11, HIGH);
+    digitalWrite(10, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(5, LOW);
+  }
+  else if(opticAnalog1 < 500 && opticAnalog2 >= 200){
+    digitalWrite(11, LOW);
+    digitalWrite(10, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(5, HIGH);
+  }
+  else if(opticAnalog1 < 500 && opticAnalog2 < 200){
+    digitalWrite(11, LOW);
+    digitalWrite(10, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(5, LOW);
+  }
+}
    
-   
-  delay(1);
+  delay(5);
 }
